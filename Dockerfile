@@ -1,4 +1,4 @@
-FROM nimmis/java:oracle-7-jdk
+FROM nimmis/java:openjdk-8-jdk
 MAINTAINER Martin Chalupa <chalimartines@gmail.com>
 
 #Base image doesn't start in root
@@ -87,7 +87,7 @@ RUN chmod +x /usr/bin/killServices.sh
 RUN echo export TERM=xterm >> /etc/bash.bashrc
 
 #
-RUN wget -O /cdh5-docker-support.jar https://github.com/ahadrana/cdh5-docker/releases/download/1.0.6/cdh5-docker-support-1.0.6-SNAPSHOT.jar
+RUN wget -O /cdh5-docker-support.jar https://github.com/factual/cdh5-kitchen-sink/releases/download/1.1.0/cdh5-docker-support-1.1.0-SNAPSHOT.jar
 #COPY ./support/target/cdh5-docker-support-1.0.*-SNAPSHOT.jar /cdh5-docker-support.jar
 
 #COPY support /cdh5-docker-support
