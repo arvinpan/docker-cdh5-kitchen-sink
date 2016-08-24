@@ -87,7 +87,7 @@ RUN chmod +x /usr/bin/killServices.sh
 RUN echo export TERM=xterm >> /etc/bash.bashrc
 
 #
-RUN wget -O /cdh5-docker-support.jar https://github.com/factual/cdh5-kitchen-sink/releases/download/1.1.0/cdh5-docker-support-1.1.0-SNAPSHOT.jar
+RUN wget -O /cdh5-docker-support.jar https://github.com/factual/docker-cdh5-kitchen-sink/releases/download/1.1.0/cdh5-docker-support-1.1.0-SNAPSHOT.jar
 #COPY ./support/target/cdh5-docker-support-1.0.*-SNAPSHOT.jar /cdh5-docker-support.jar
 
 #COPY support /cdh5-docker-support
