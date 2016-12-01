@@ -86,13 +86,10 @@ RUN chmod +x /usr/bin/killServices.sh
 #fix some terminal preferences 
 RUN echo export TERM=xterm >> /etc/bash.bashrc
 
-#
+# get support jar from github 
 RUN wget -O /cdh5-docker-support.jar https://github.com/factual/docker-cdh5-kitchen-sink/releases/download/1.1.0/cdh5-docker-support-1.1.0-SNAPSHOT.jar
-#COPY ./support/target/cdh5-docker-support-1.0.*-SNAPSHOT.jar /cdh5-docker-support.jar
-
-#COPY support /cdh5-docker-support
-#RUN cd /cdh5-docker-support && mvn package 
-#RUN cd /cdh5-docker-support && cp target/cdh5-docker-support-1.0.*-SNAPSHOT.jar /cdh5-docker-support.jar
+# if you are doing testing, you can retrieve the support jar from a local build
+#COPY ./support/target/cdh5-docker-support-1.1.0-SNAPSHOT.jar /cdh5-docker-support.jar
 
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \

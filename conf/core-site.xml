@@ -17,61 +17,20 @@
     <value>true</value>
   </property>
 
+  <!-- impersonation, let test-service impersonate users in neutronic-users -->  
   <property>
-    <name>hadoop.proxyuser.oozie.hosts</name>
+    <name>hadoop.proxyuser.test-service.groups</name>
+    <value>neutronic-users</value>
+  </property>
+  <!-- let test-service impersonate itself. this is to work around a bug in YARN 
+       and allow the Coordinator to launch an Application Master outside of YARN -->
+  <property>
+    <name>hadoop.proxyuser.test-service.users</name>
+    <value>test-service</value>
+  </property>
+  <!-- allow impersonation from any host -->  
+  <property>
+    <name>hadoop.proxyuser.test-service.hosts</name>
     <value>*</value>
   </property>
-  <property>
-    <name>hadoop.proxyuser.oozie.groups</name>
-    <value>*</value>
-  </property>
-
-  <!-- Hue WebHDFS proxy user setting -->
-  <property>
-    <name>hadoop.proxyuser.hue.hosts</name>
-    <value>*</value>
-  </property>
-  <property>
-    <name>hadoop.proxyuser.hue.groups</name>
-    <value>*</value>
-  </property>
-  <property>  
-    <name>hadoop.proxyuser.httpfs.hosts</name>  
-    <value>*</value>  
-  </property>  
-  <property>  
-    <name>hadoop.proxyuser.httpfs.groups</name>  
-    <value>*</value>  
-  </property> 
-
-
-  <!-- impersonation, for letting root & test-service  create directories in tests when needed -->
-  <property>
-    <name>hadoop.proxyuser.root.groups</name>
-    <value>*</value>
-  </property>
-  <property>
-    <name>hadoop.proxyuser.root.hosts</name>
-    <value>*</value>
-  </property>
-
-  <property>
-    <name>hadoop.proxyuser.test-service-setuid.groups</name>
-    <value>*</value>
-  </property>
-  <property>
-    <name>hadoop.proxyuser.test-service-setuid.hosts</name>
-    <value>*</value>
-  </property>
-
-  <!-- impersonation, yarn users is running events, and will launch mapreduce jobs on behalf of user for merge -->
-  <property>
-    <name>hadoop.proxyuser.yarn.hosts</name>
-    <value>*</value>
-  </property>
-  <property>
-    <name>hadoop.proxyuser.yarn.groups</name>
-    <value>*</value>
-  </property>
-
 </configuration>
