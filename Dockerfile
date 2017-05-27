@@ -13,10 +13,11 @@ COPY conf/python.list /etc/apt/sources.list.d/python.list
 
 # Add a Repository Key and Install CDH packages and deps
 RUN wget http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/archive.key -O archive.key && \
-    sudo apt-key add archive.key && \
-    sudo apt-get update && \
-    sudo apt-get install -y zookeeper-server hadoop-conf-pseudo hbase-master hbase-regionserver maven krb5-user krb5-kdc krb5-admin-server
-
+    apt-key add archive.key && \
+    apt-get update && \
+    apt-get install -y zookeeper-server hadoop-conf-pseudo hbase-master hbase-regionserver maven krb5-user krb5-kdc krb5-admin-server
+RUN wget 'http://mirror.metrocast.net/apache/spark/spark-2.1.1/spark-2.1.1-bin-hadoop2.6.tgz' && tar -xzvf spark-2.1.1-bin-hadoop2.6.tgz && rm spark-2.1.1-bin-hadoop2.6.tgz
+COPY conf/spark/* spark-2.1.1-bin-hadoop2.6/conf/
 # Install Kafka
 RUN useradd -m -U kafka && \
     mkdir -p /data/kafka/queues && \
@@ -45,6 +46,7 @@ COPY conf/mapred-site.xml /etc/hadoop/conf/mapred-site.xml
 COPY conf/hadoop-env.sh /etc/hadoop/conf/hadoop-env.sh
 COPY conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml
 COPY conf/hbase-site.xml /etc/hbase/conf/hbase-site.xml
+COPY conf/hbase-site.xml /etc/hadoop/conf/hbase-site.xml
 COPY conf/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 COPY conf/jaas.conf /etc/zookeeper/conf/jaas.conf
 COPY conf/java.env /etc/zookeeper/conf/java.env
